@@ -23,9 +23,6 @@ var addCanvas = function( image ){
   var cleanImg = new Image();
   cleanImg.src = image.context.src;
 
-  console.log( image.context.height );
-  console.log( image.context.width );
-
   cleanImg.onload = function () {    
     ctx.drawImage( cleanImg, 0, 0, imgWidth, imgHeight );
   };
@@ -44,7 +41,14 @@ $(document).on('ready', function(){
       $(this).css('display', 'none');
       // run the glitching code
       var my_image_data = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
-      var parameters = { amount: 40, seed: 45, iterations: 30, quality: 30 };
+      var parameters = { 
+        amount: Math.random() * 90, 
+        seed: Math.random() * 90, 
+        iterations: Math.random() * 90, 
+        quality: Math.random() * 90 
+      };
+
+      console.log( parameters );
 
       var drawGlitchedImageData = function(image_data) {
           ctx.putImageData(image_data, 0, 0);
