@@ -33,6 +33,8 @@
                 "styles/main.css"
             ],
             "js": [
+                "bower_components/jquery/dist/jquery.js",
+                "scripts/glitch-canvas.js",
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",
