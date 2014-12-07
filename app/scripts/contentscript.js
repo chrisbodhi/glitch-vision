@@ -29,15 +29,17 @@ var glitchOut = function( id ){
   ctx = canvas.getContext('2d');
 
   var my_image_data = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
+  
   var parameters = { 
-    amount: 17, 
-    seed: 17, 
-    iterations: 17, 
-    quality: 17 
+    amount: 83, 
+    seed: 97, 
+    iterations: 49, 
+    quality: 58 
   };
 
   var drawGlitchedImageData = function(image_data) {
-      ctx.putImageData(image_data, 0, 0);
+    // TODO: determine x,y of image; try putting that in instead of 0, 0
+    ctx.putImageData(image_data, 0, 0);
   }
 
   glitch(my_image_data, parameters, drawGlitchedImageData);
@@ -47,7 +49,7 @@ var glitchOut = function( id ){
 $(document).on('ready', function(){
   'use strict';
 
-  $('img').each( function ( index ){
+  $('img').each( function ( ){
     // 1. Create a random ID for the canvas image
     id = (Math.random() * 10000).toFixed().toString();
     var self = $(this);
