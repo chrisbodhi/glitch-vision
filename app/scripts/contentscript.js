@@ -9,7 +9,7 @@ var addCanvas = function( image, id ){
   var imgWidth = image.context.width;
   var imgHeight = image.context.height;
 
-  $('body').append('<canvas id="' + id + '" width="' + imgWidth + '" height="' + imgHeight + '" style="z-index:100;postion:absolute;"></canvas>');
+  $(image).replaceWith('<canvas id="' + id + '" width="' + imgWidth + '" height="' + imgHeight + '" style="z-index:100;postion:absolute;"></canvas>');
 
   // 3. drop img src into canvas *IF JPG/JPEG/jpg/jpeg*
   canvas = document.getElementById( id );
@@ -27,7 +27,7 @@ var glitchOut = function( id ){
   
   canvas = document.getElementById( id );
   ctx = canvas.getContext('2d');
-  
+
   var my_image_data = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
   var parameters = { 
     amount: 17, 
@@ -47,13 +47,14 @@ var glitchOut = function( id ){
 $(document).on('ready', function(){
   'use strict';
 
-  $('img').each( function (){
+  $('img').each( function ( index ){
     // 1. Create a random ID for the canvas image
     id = (Math.random() * 10000).toFixed().toString();
-    
-    if ((/\.(jpg|jpeg)/i).test($(this).context.src)){
+    var self = $(this);
+
+    if ((/\.(jpg|jpeg)/i).test( self.context.src) ){
       // drop image into canvas
-      addCanvas( $(this), id );
+      addCanvas( self, id );
       // remove image from DOM
       $(this).css('display', 'none');
       // run the glitching code

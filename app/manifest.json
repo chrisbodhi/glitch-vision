@@ -35,7 +35,8 @@
             "js": [
                 "bower_components/jquery/dist/jquery.js",
                 "scripts/glitch-canvas.js",
-                "scripts/contentscript.js"
+                "scripts/contentscript.js",
+                "scripts/chromereload.js"
             ],
             "run_at": "document_end",
             "all_frames": false
