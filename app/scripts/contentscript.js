@@ -5,6 +5,9 @@ var canvas,
 var replaceImage = function ( image ) {
   'use strict';
 
+  var imgWidth = image.context.width;
+  var imgHeight = image.context.height;
+
   var cleanImg = new Image();
   cleanImg.src = image.context.src;
 
