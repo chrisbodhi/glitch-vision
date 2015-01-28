@@ -32,14 +32,10 @@ var addCanvas = function( image, id ){
 
 var generateParams = function () {
   return { 
-    amount: Math.random() * 90, 
-    seed: Math.random() * 90, 
-    iterations: Math.random() * 90, 
-    quality: Math.random() * 90 
-    // amount: 87, 
-    // seed: 55, 
-    // iterations: 42, 
-    // quality: 69
+    amount: Math.random() * 99, 
+    seed: Math.random() * 100, 
+    iterations: Math.random() * 50, 
+    quality: Math.random() * 99 
   };
 };
 
@@ -60,16 +56,14 @@ $(document).on('ready', function(){
   'use strict';
 
   $('img').each( function ( ){
-    // 1. Create a random ID for the canvas image
     id = (Math.random() * 10000).toFixed().toString();
     var self = $(this);
-    var params = generateParams();
-
     if ((/\.(jpg|jpeg)/i).test( self.context.src) ){
-      // drop image into canvas
       var anImage = addCanvas( self, id );
+      var params = generateParams();
       replaceImage( anImage );
-      // run the glitching code
+      console.log( params );
+      console.log( '=======================================================' );
       glitchOut( canvas, ctx, params );
     }
   })
