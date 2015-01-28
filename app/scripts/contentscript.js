@@ -9,7 +9,7 @@ var addCanvas = function( image, id ){
   var imgWidth = image.context.width;
   var imgHeight = image.context.height;
 
-  $(image).replaceWith('<canvas id="' + id + '" width="' + imgWidth + '" height="' + imgHeight + '" style="z-index:100;postion:absolute;"></canvas>');
+  $(image).replaceWith('<canvas id="' + id + '" width="' + imgWidth + '" height="' + imgHeight + '"></canvas>');
 
   // 3. drop img src into canvas *IF JPG/JPEG/jpg/jpeg*
   canvas = document.getElementById( id );
@@ -18,27 +18,31 @@ var addCanvas = function( image, id ){
   var cleanImg = new Image();
   cleanImg.src = image.context.src;
 
-  cleanImg.onload = function () {    
+  cleanImg.onload = function () {
     ctx.drawImage( cleanImg, 0, 0, imgWidth, imgHeight );
   };
+
 };
 
-var glitchOut = function( id ){
+var glitchOut = function( canvas, ctx ){
   
-  canvas = document.getElementById( id );
-  ctx = canvas.getContext('2d');
+  // canvas = document.getElementById( id );
+  // ctx = canvas.getContext('2d');
 
   var my_image_data = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
-  
+
   var parameters = { 
-    amount: 83, 
-    seed: 97, 
-    iterations: 49, 
-    quality: 58 
+    // amount: Math.random() * 90, 
+    // seed: Math.random() * 90, 
+    // iterations: Math.random() * 90, 
+    // quality: Math.random() * 90 
+    amount: 87, 
+    seed: 55, 
+    iterations: 42, 
+    quality: 69
   };
 
   var drawGlitchedImageData = function(image_data) {
-    // TODO: determine x,y of image; try putting that in instead of 0, 0
     ctx.putImageData(image_data, 0, 0);
   }
 
@@ -57,11 +61,9 @@ $(document).on('ready', function(){
     if ((/\.(jpg|jpeg)/i).test( self.context.src) ){
       // drop image into canvas
       addCanvas( self, id );
-      // remove image from DOM
-      $(this).css('display', 'none');
+      console.log( canvas );
       // run the glitching code
-      glitchOut( id );
-
+      glitchOut( canvas, ctx );
     }
   })
 });
