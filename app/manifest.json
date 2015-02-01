@@ -19,8 +19,7 @@
             "19": "images/icon-19.png",
             "38": "images/icon-38.png"
         },
-        "default_title": "glitch vision",
-        "default_popup": "popup.html"
+        "default_title": "glitch vision"
     },
     // "options_page": "options.html",
     "content_scripts": [
@@ -30,8 +29,8 @@
                 "https://*/*"
             ],
             "js": [
-                "bower_components/jquery/dist/jquery.js",
-                "scripts/glitch-canvas.js",
+                "bower_components/jquery/dist/jquery.min.js",
+                "scripts/glitch-canvas.min.js",
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",

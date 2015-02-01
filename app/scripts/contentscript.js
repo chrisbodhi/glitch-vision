@@ -1,4 +1,4 @@
-var canvas, 
+var canvas,
     ctx,
     id;
 
@@ -31,24 +31,25 @@ var addCanvas = function( image, id ){
 };
 
 var generateParams = function () {
-  return { 
-    amount: Math.random() * 99, 
-    seed: Math.random() * 100, 
-    iterations: Math.random() * 50, 
-    quality: Math.random() * 99 
+  'use strict';
+  return {
+    amount: Math.random() * 99,
+    seed: Math.random() * 100,
+    iterations: Math.random() * 50,
+    quality: Math.random() * 99
   };
 };
 
 var glitchOut = function( canvas, ctx, params ){
   'use strict';
 
-  var my_image_data = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
+  var myImageData = ctx.getImageData( 0, 0, canvas.clientWidth, canvas.clientHeight );
 
-  var makeGlitchedImageData = function(image_data) {
-    ctx.putImageData(image_data, 0, 0);
-  }
+  var makeGlitchedImageData = function(imageData) {
+    ctx.putImageData(imageData, 0, 0);
+  };
 
-  glitch(my_image_data, params, makeGlitchedImageData);
+  glitch(myImageData, params, makeGlitchedImageData);
 };
 
 // JPG Check - glitch.js only works for jpg/jpeg images
@@ -66,5 +67,5 @@ $(document).on('ready', function(){
       console.log( '=======================================================' );
       glitchOut( canvas, ctx, params );
     }
-  })
+  });
 });
