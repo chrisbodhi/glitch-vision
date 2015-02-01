@@ -30,7 +30,7 @@
             ],
             "js": [
                 "bower_components/jquery/dist/jquery.min.js",
-                "scripts/glitch-canvas.min.js",
+                "bower_components/glitch-canvas/dist/glitch-canvas.min.js",
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",

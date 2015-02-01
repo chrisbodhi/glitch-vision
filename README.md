@@ -7,3 +7,8 @@
 ![glitch-vision logo](app/images/glitch-vision-logo.png)
 
 Add the extension to your Chrome browser by downloading and installing it through the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions). 
+
+
+##Development
+Run `glitch debug` to turn on a very helpful watcher.
+Pull requests welcome!
